@@ -4,52 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Desafio 1 - Painel de Boas-Vindas</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-        body {
-            background: linear-gradient(135deg, #1e1e2f 0%, #11111d 100%);
-            color: #ffffff;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            padding: 20px;
-        }
-        .painel {
-            background-color: #27293d;
-            padding: 40px;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-            text-align: center;
-            width: 100%;
-            max-width: 500px;
-            border: 1px solid #3d3f5c;
-        }
-        .saudacao {
-            font-size: 24px;
-            font-weight: 600;
-            color: #e2e8f0;
-            margin-bottom: 15px;
-        }
-        .hora-atual {
-            font-size: 54px;
-            font-weight: bold;
-            color: #00f2c3;
-            font-family: monospace;
-            margin-bottom: 15px;
-            letter-spacing: 2px;
-        }
-        .data-extenso {
-            font-size: 18px;
-            color: #9a9a9a;
-            text-transform: capitalize;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
 </head>
 <body>
 <header>
@@ -64,41 +20,5 @@
         <p id="txtData" class="data-extenso">Carregando data por extenso...</p>
     </div>
 
-    <script>
-        function atualizarRelogio(){
-            const agora = new Date();
-
-            hora = String(agora.getHours()).padStart(2,"0");
-            minuto = String(agora.getMinutes()).padStart(2,"0");
-            segundo = String(agora.getSeconds()).padStart(2,"0");
-
-            const horaformatada= `${hora}:${minuto}:${segundo}`
-
-            document.getElementById("txtHora").textContent = horaformatada;
-  
-        }
-        
-        function atualizarMensagem(){
-            const agora = new Date();
-
-            if(agora.getHours() > 6 && agora.getHours()<12){
-                document.getElementById("txtSaudacao").innerHTML="<h2 id=txtSaudacao class=saudacao>Bom dia São Luís</h2>"
-            }else if (agora.getHours() >=12 && agora.getHours()<18){
-                 document.getElementById("txtSaudacao").innerHTML="<h2 id=txtSaudacao class=saudacao>Boa tarde São Luís</h2>"
-            }else{
-                document.getElementById("txtSaudacao").innerHTML="<h2 id=txtSaudacao class=saudacao>Boa noite São Luís</h2>"
-            }
-
-            let mes = agora.toLocaleString("pt-BR",{month : "long"})
-            let dia = agora.getDay();
-            let ano = agora.getFullYear();
-
-            document.getElementById("txtData").innerHTML=`${dia} de ${mes} de ${ano}`;
-
-        }
-        setInterval(atualizarRelogio,1000);
-        atualizarMensagem();
-        atualizarRelogio();
-    </script>
 </body>
 </html>
